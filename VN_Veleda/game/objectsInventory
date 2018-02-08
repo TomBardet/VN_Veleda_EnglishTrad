@@ -1,0 +1,37 @@
+#######################################################################
+######### - Le Check de l'objet qu'on utilise - #######################
+
+label Obj_use (obj = "none", objUser = "none"):
+    if objUser == interlocuteur :
+        if obj == "glaive":
+            jump useGlaiveSuccess
+        elif obj == "bouclier":
+            jump useBouclierSuccess
+        elif obj == "blague":
+            jump useBlagueSuccess
+        elif obj == "lunettes" :
+            jump useLunettesSuccess
+    else :##### Ecrire ici les conditions d'échec d'objet, on peut en faire pour chaque interlocuteur ! faut en profiter
+        if obj == "glaive" :
+            y "Je suis pas certain qu'un glaive puisse me servir dans cette situation"
+        elif obj == "bouclier":
+            y "J'utiliserai le bouclier si on m'attaque, mais je me sens pas vraiment en danger là"
+        elif obj == "blague" :
+            y "Je pourrais pas dire pourquoi, mais je sens que ce n'est pas le bon moment pour faire une blague..."
+        elif obj == "lunettes" :
+            y "Je ne vois pas en quoi des lunettes me seraient utiles dans cette situation"
+    call screen inventory_button
+    
+label useGlaiveSuccess:
+    narration "success"
+    jump start
+label useBouclierSuccess:
+    narration "success"
+    jump start
+label useBlagueSuccess:
+    narration "Héhé, tout le monde sait que chêvre qui rit, à moitié dans ton lit !"
+    y "Dis, tu connais l'histoire du goth, de l'ostrogoth et du wisogoth qui vont au cirque ?"
+    jump start
+label useLunettesSuccess:
+    narration "success"
+    jump start
